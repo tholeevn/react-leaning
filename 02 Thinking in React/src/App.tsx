@@ -1,8 +1,15 @@
 import {useState} from 'react';
 
-function FilterableProductTable({products, title}: { products: Product[], title: string }) {
-    const [filterText, setFilterText] = useState('');
-    const [inStockOnly, setInStockOnly] = useState(false);
+interface iProduct {
+    name: string,
+    price: string,
+    stocked: boolean,
+    category: string
+}
+
+function FilterableProductTable({products, title}: { products: iProduct[], title: string }) {
+    const [filterText, setFilterText] = useState<string>('');
+    const [inStockOnly, setInStockOnly] = useState<boolean>(false);
 
     return (<>
         <h3>{title}</h3>
@@ -35,7 +42,7 @@ function SearchBar({filterText, inStockOnly, onFilterTextChange, onInStockChange
 }
 
 function ProductTable({products, filterText, inStockOnly}: {
-    products: Array<Product>,
+    products: Array<iProduct>,
     filterText: string,
     inStockOnly: boolean
 }) {
@@ -78,7 +85,7 @@ function ProductCategoryRow({category}: { category: string }) {
     </tr>)
 }
 
-function ProductRow({product}: { product: Product }) {
+function ProductRow({product}: { product: iProduct }) {
     const name = product.stocked ? product.name : <span style={{color: 'red'}}>
       {product.name}
     </span>;
@@ -91,7 +98,7 @@ function ProductRow({product}: { product: Product }) {
     </>);
 }
 
-const PRODUCTS = [{category: "Fruits", price: "$1", stocked: true, name: "Apple"}, {
+const PRODUCTS: iProduct[] = [{category: "Fruits", price: "$1", stocked: true, name: "Apple"}, {
     category: "Fruits",
     price: "$1",
     stocked: true,
@@ -108,12 +115,7 @@ const PRODUCTS = [{category: "Fruits", price: "$1", stocked: true, name: "Apple"
     name: "Peas"
 }];
 
-interface Product {
-    name: string,
-    price: string,
-    stocked: boolean,
-    category: string
-}
+
 
 export default function App() {
 
