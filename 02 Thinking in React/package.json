@@ -15,11 +15,12 @@
     "url": "https://github.com/tholeevn/react-leaning.git"
   },
   "dependencies": {
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "^5.0.0"
   },
-  "devDependencies": {},
   "private": true,
   "browserslist": {
     "production": [
