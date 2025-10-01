@@ -37,7 +37,7 @@ function ProductTable({products, filterText, inStockOnly}) {
             return;
         }
 
-        if (product.name.indexOf(filterText) === -1) {
+        if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
             return;
         }
 
